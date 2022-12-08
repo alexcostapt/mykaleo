@@ -1,10 +1,10 @@
 import { text } from "stream/consumers";
-import { Column, PrimaryGeneratedColumn, Timestamp } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, PrimaryGeneratedColumn, Timestamp, UpdateDateColumn } from "typeorm";
 
 
 export class BaseClass{
-    @PrimaryGeneratedColumn({type: 'integer'})
-    id: number
+    @PrimaryGeneratedColumn('uuid')
+    id: string
     
     @Column({type: 'integer', nullable: true})
     userLastUpdateId?: number    
@@ -12,12 +12,14 @@ export class BaseClass{
     @Column({type: 'boolean', default: true})
     active: boolean
 
-    @Column()
+    @CreateDateColumn({type: 'timestamp', default: () => "CURRENT_TIMESTAMP" })
     createdAt: Date;
+    // @Column()
+    // createdAt: Date;
 
-    @Column({ nullable: true })
+    @UpdateDateColumn({type: 'timestamp', nullable: true })
     updatedAt?: Date;
 
-    @Column({nullable: true })
+    @DeleteDateColumn({type: 'timestamp', nullable: true })
     deletedAt?: Date;
 }

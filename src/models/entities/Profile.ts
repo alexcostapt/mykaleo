@@ -9,14 +9,14 @@ export class Profile extends BaseClass {
     profile: string
 
     @Column({type: 'boolean', default: false})
-    edit: boolean
+    prf_edit: boolean
 
     @Column({type: 'boolean', default: false})
-    create: boolean
+    prf_create: boolean
 
     @Column({type: 'boolean', default: false})
-    read: boolean
+    prf_read: boolean
     
     @Column({type: 'boolean', default: false})
-    delete: boolean
+    prf_delete: boolean
 }
