@@ -19,11 +19,11 @@ export class User extends BaseClass{
     @Column({type: 'text'})
     password: string
 
-    @ManyToOne(() => Company, company => company.id)
+    @OneToOne(() => Company, company => company.id)
     @JoinColumn({name: 'company_id'})
     company: Company
 
-    @OneToOne(() => Profile, profile => profile.id)
+    @ManyToOne(() => Profile, profile => profile.id)
     @JoinColumn({name: 'profile_id'})
     profile: Profile
 }
